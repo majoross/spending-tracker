@@ -1,12 +1,17 @@
 export type SpendingType = {
   id: number;
-  descripton: string;
+  description: string;
   amount: number;
   currency: string;
   spent_at: string;
 };
 
-export enum Currency {
+export enum CurrencyEnum {
   HUF = "HUF",
   USD = "USD",
+}
+
+export type SortUrlParamsType = {
+  currency:string;
+  orderBy:string;
 }

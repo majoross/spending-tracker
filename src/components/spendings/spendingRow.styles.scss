@@ -1,0 +1,85 @@
+.spending-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f6f6f6;
+    margin: 0px 0px 20px 0px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+
+    .leftSide {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .description-date-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .description {
+                font-weight: 500;
+            }
+
+            .date {
+                margin-top: 5px;
+                color: rgb(173, 173, 173);
+            }
+        }
+
+        .currency-icon{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            width: 50px;
+            height: 50px;
+            background-color: rgb(153, 197, 255);
+            color: rgb(38, 48, 90);
+            border-radius: 15px;
+            margin-right: 25px;
+        }
+    }
+
+    .rightSide {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+        
+        .spending {
+            font-weight: 600;
+            margin-right: 25px;
+        }
+
+        .button {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                height: 20px;
+            }
+            &:hover {
+                cursor: pointer;
+                &.delete-button{
+                    background-color: rgb(230, 87, 87);
+                }
+                &.edit-button{
+                    background-color: rgb(230, 228, 87);
+                }
+            }
+        }
+    }
+
+    
+}

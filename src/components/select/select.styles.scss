@@ -1,0 +1,14 @@
+.select-component select{
+    height: 40px;
+    border-radius: 5px;
+    border: 0px;
+    padding-left: 5px;
+    font-family: "montserrat";
+    font-weight: 500;
+    box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+    &:hover{
+        cursor: pointer;
+    }
+}

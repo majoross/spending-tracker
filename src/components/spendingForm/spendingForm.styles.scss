@@ -1,0 +1,37 @@
+.spending-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+
+    input {
+        font-family: "montserrat";
+        font-weight: 500;
+        height: 40px;
+        padding-left: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        border: 0px;
+        box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+    }
+
+    button.save-button {
+        font-family: "montserrat";
+        font-weight: bold;
+        height: 40px;
+        padding: 10px 20px 10px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        border: 0px;
+        background-color: rgb(27, 192, 156);
+        box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+        -webkit-box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+        -moz-box-shadow: 3px 3px 5px 0px rgba(126, 126, 126, 0.75);
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

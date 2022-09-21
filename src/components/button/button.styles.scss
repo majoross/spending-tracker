@@ -1,0 +1,18 @@
+#sort-button{
+    height: 40px;
+    border:none;
+    border-radius: 5px;
+    font-family: "montserrat";
+        font-weight: 500;
+    margin: 5px;
+    &.selected {
+        background-color: rgb(153, 197, 255);
+        color: rgb(0, 116, 224);
+
+    }
+
+    &:hover {
+        cursor: pointer;
+        
+    }
+}
