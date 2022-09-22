@@ -3,6 +3,9 @@ import SpendingForm from "./components/spendingForm/spendingForm.component";
 import FilterBar from "./components/filterBar/filterBar.component";
 import Spendings from "./components/spendings/spendings.component";
 import SpendingProvider from "./context/spendingsContext";
+import { postSpendings } from "./services/spenginsApi.service";
+import { SpendingFormType } from "./types/spendingForm.type";
+import { rootURL } from "./helpers/urlHelper";
 
 const App = () => {
   return (

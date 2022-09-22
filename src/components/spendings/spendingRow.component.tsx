@@ -9,7 +9,7 @@ interface ISpendingRow {
 }
 
 const SpendingRow = ({
-  spending: { id, amount, currency, description, spent_at },
+  spending: { amount, currency, description, spent_at },
 }: ISpendingRow) => {
   return (
     <div className="spending-row">

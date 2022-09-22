@@ -6,15 +6,15 @@ import { SpendingFormType } from "../../types/spendingForm.type";
 import SelectComponent from "../select/select.component";
 import "./spendingForm.styles.scss";
 
-interface ISpendingForm {}
+const formInitState = {
+  amount: "",
+  currency: "HUF",
+  description: "",
+  spent_at: "",
+};
 
-const SpendingForm = (props: ISpendingForm) => {
-  const [formState, setFormState] = useState<SpendingFormType>({
-    amount: 0,
-    currency: "HUF",
-    description: "",
-    spent_at: "",
-  });
+const SpendingForm = () => {
+  const [formState, setFormState] = useState<SpendingFormType>(formInitState);
 
   const handleChange = (value: string, key: string) => {
     setFormState((prev) => {
@@ -28,10 +28,12 @@ const SpendingForm = (props: ISpendingForm) => {
     });
   };
 
-  const createSpending = async (event: React.FormEvent) => {
+  const createSpending = (event: React.FormEvent) => {
     event.preventDefault();
     const date = new Date().toISOString();
-    await postSpendings(rootURL, { ...formState, spent_at: date });
+    postSpendings(rootURL, { ...formState, spent_at: date });
+    //I need to reset all components to default state so I found it easier to just reload the page itself
+    window.location.reload();
   };
 
   return (
@@ -40,6 +42,7 @@ const SpendingForm = (props: ISpendingForm) => {
         onChange={(event) => handleChange(event?.target.value, "description")}
         className="description-input"
         placeholder="description"
+        value={formState.description}
         type="text"
         required
       />
@@ -47,6 +50,7 @@ const SpendingForm = (props: ISpendingForm) => {
         onChange={(event) => handleChange(event?.target.value, "amount")}
         className="amount-input"
         placeholder="0"
+        value={formState.amount}
         type="number"
         step="any"
         min="0"

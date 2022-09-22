@@ -2,9 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { SpendingContext } from "../../context/spendingsContext";
 import { createUrl } from "../../helpers/urlHelper";
 import { sortSelectModel } from "../../models/selectModels";
+import { fetchSpendings } from "../../services/spenginsApi.service";
 import { SpendingType } from "../../types/spenging.type";
 import ButtonGroup from "../buttonGroup/buttonGroup.component";
 import SelectComponent from "../select/select.component";
+import Spendings from "../spendings/spendings.component";
 import "./filterBar.styles.scss";
 
 const FilterBar = () => {
@@ -14,30 +16,21 @@ const FilterBar = () => {
   });
 
   useEffect(() => {
-    fetch(createUrl({ type: "SORT", params: sortUrlParams }))
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((spendings: SpendingType[]) => {
+    fetchSpendings(createUrl({ type: "SORT", params: sortUrlParams })).then(
+      (spendings: SpendingType[]) => {
         setSpendings(spendings);
-        return spendings;
-      })
-      .catch((error) => error.message);
+      }
+    );
   }, [sortUrlParams]);
 
   const { setSpendings } = useContext(SpendingContext);
 
   const handleOrderby = (value: string) => {
-    setSortUrlParams((prev) => {
-      return { ...prev, orderBy: value };
-    });
+    setSortUrlParams({ ...sortUrlParams, orderBy: value });
   };
+
   const handleSortCurrency = (value: string) => {
-    setSortUrlParams((prev) => {
-      return { ...prev, currency: value };
-    });
+    setSortUrlParams({ ...sortUrlParams, currency: value });
   };
 
   return (
