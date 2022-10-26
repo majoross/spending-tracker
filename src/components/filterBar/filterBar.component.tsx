@@ -14,6 +14,7 @@ const FilterBar = () => {
     orderBy: "-spent_at",
     currency: "",
   });
+  const { setSpendings } = useContext(SpendingContext);
 
   useEffect(() => {
     fetchSpendings(createUrl({ type: "SORT", params: sortUrlParams })).then(
@@ -22,8 +23,6 @@ const FilterBar = () => {
       }
     );
   }, [sortUrlParams]);
-
-  const { setSpendings } = useContext(SpendingContext);
 
   const handleOrderby = (value: string) => {
     setSortUrlParams({ ...sortUrlParams, orderBy: value });

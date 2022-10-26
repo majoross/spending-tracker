@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { SpendingContext } from "../../context/spendingsContext";
 import { rootURL } from "../../helpers/urlHelper";
 import { currencySelectModel } from "../../models/selectModels";
-import { postSpendings } from "../../services/spenginsApi.service";
+import {
+  fetchSpendings,
+  postSpendings,
+} from "../../services/spenginsApi.service";
 import { SpendingFormType } from "../../types/spendingForm.type";
+import { SpendingType } from "../../types/spenging.type";
 import SelectComponent from "../select/select.component";
 import "./spendingForm.styles.scss";
 
@@ -15,6 +20,7 @@ const formInitState = {
 
 const SpendingForm = () => {
   const [formState, setFormState] = useState<SpendingFormType>(formInitState);
+  const { setSpendings } = useContext(SpendingContext);
 
   const handleChange = (value: string, key: string) => {
     setFormState((prev) => {
@@ -32,8 +38,10 @@ const SpendingForm = () => {
     event.preventDefault();
     const date = new Date().toISOString();
     postSpendings(rootURL, { ...formState, spent_at: date });
-    //I need to reset all components to default state so I found it easier to just reload the page itself
-    window.location.reload();
+    setFormState(formInitState);
+    fetchSpendings(rootURL).then((spendings: SpendingType[]) => {
+      setSpendings(spendings);
+    });
   };
 
   return (

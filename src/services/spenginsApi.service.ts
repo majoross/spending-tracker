@@ -39,3 +39,22 @@ export const fetchSpendings = (url:string):Promise<SpendingType[]> => {
     .catch((error) => error.message);
   return result;
   };
+
+  export const deleteSpending = (url:string)=> {
+
+    const requestOptions:RequestInit = {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+  };
+    const result = fetch(
+      url,
+      requestOptions
+    )
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .catch((error) => error.message);
+  return result;
+  };
